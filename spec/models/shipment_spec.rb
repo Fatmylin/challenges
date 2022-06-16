@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'spec_helper'
 
 RSpec.describe Shipment, type: :model do
   describe '#shipment_items_with_description_and_count' do
@@ -16,18 +16,8 @@ RSpec.describe Shipment, type: :model do
     end
 
     context 'when having shipment items' do
-      before do
-        ['Apple Watch', 'iPad', 'iPhone'].each.with_index(1) do |description, idx|
-          create_list(
-            :shipment_item, 
-            idx,
-            description: description,
-            weight: idx,
-            shipment: shipment
-          )
-        end
-      end
-
+      let(:shipment) { create(:shipment, :with_apple_items) }
+      
       it 'return description and count of shipment items in ASC order of count' do
         expect(shipment.shipment_items_with_description_and_count(items_order: 'ASC')).to eq([
           { description: 'Apple Watch', count: 1 },
