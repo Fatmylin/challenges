@@ -14,7 +14,7 @@ class ShipmentsController < ApplicationController
       ) 
     }
   rescue ActiveRecord::RecordNotFound => e
-    render json: { errors: e.message }, status: :not_found
+    render json: { errors: 'Shipment not found' }, status: :not_found
   rescue StandardError => e
     render json: { errors: e.message }, status: :unprocessable_entity
   end

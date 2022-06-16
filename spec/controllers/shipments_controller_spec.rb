@@ -8,6 +8,7 @@ describe ShipmentsController do
     it 'return not_found when shipment is not found' do
       get :show, params: { id: 'XX', company_id: 'XX' }
       expect(response).to have_http_status :not_found
+      expect(json_response).to eq('errors' => 'Shipment not found')
     end
 
     it 'return unprocessable_entity when other error happenes' do
