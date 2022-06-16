@@ -1,4 +1,4 @@
-## Task 1
+(Done)## Task 1
 
 The frontend needs to display the items included in a shipment. Write a instance method for `shipment` that groups its associated `shipment_items` by description and returns an array of hashes. The hashes should be ordered by count, in descending or ascending order depending on the `items_order` param.
 
@@ -20,7 +20,7 @@ Given a `shipment` containing following `shipment_items`: 1 Apple Watch, 2 iPhon
 ]
 ```
 
-## Task 2
+(Done)## Task 2
 
 Now let's implement an endpoint `GET /companies/:company_id/shipments/:id?items_order={asc/desc}` to retrieve data of a specific shipment. The response should look like this:
 
