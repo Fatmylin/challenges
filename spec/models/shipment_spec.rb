@@ -29,9 +29,9 @@ RSpec.describe Shipment, type: :model do
         ])
       end
 
-      context 'when given oder other than ASC' do
+      context 'when given items_order other than ASC' do
         it 'return description and count of shipment items in DESC order of count' do
-          expect(shipment.shipment_items_with_description_and_count(order: 'DESC')).to eq([
+          expect(shipment.shipment_items_with_description_and_count(items_order: 'DESC')).to eq([
             { description: 'iPhone', count: 3},
             { description: 'iPad', count: 2 },
             { description: 'Apple Watch', count: 1 }
@@ -39,7 +39,7 @@ RSpec.describe Shipment, type: :model do
         end
 
         it 'return description and count of shipment items in DESC order of count' do
-          expect(shipment.shipment_items_with_description_and_count(order: 'OTHER')).to eq([
+          expect(shipment.shipment_items_with_description_and_count(items_order: 'OTHER')).to eq([
             { description: 'iPhone', count: 3},
             { description: 'iPad', count: 2 },
             { description: 'Apple Watch', count: 1 }
