@@ -2,7 +2,11 @@ class Shipment < ApplicationRecord
   belongs_to :company
   has_many :shipment_items
 
-  def shipment_items_with_description_and_count(items_order: 'ASC')
+  ORDER = ['ASC', 'DESC'].freeze
+
+  def shipment_items_with_description_and_count(items_order:)
+    raise "Please provide correct items order like 'ASC' or 'DESC'" if ORDER.exclude?(items_order)
+    
     items = shipment_items.group(:description).count.map do |description, count|
       {
         description: description,
