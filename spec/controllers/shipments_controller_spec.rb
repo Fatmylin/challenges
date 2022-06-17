@@ -18,9 +18,17 @@ describe ShipmentsController do
     end
 
     it 'return shipment data if shipment founded' do
+      tracking_information = {
+        'status' => 'InTransit',
+        'current_location' => 'Singapore Main Office, Singapore',
+        'last_checkpoint_message' => 'Received at Operations Facility',
+        'last_checkpoint_time' => '2016-02-01T13:00:00'
+      }
+      expect(GetTrackingInformationService).to receive(:call).and_return(tracking_information)
       get :show, params: { id: shipment.id, company_id: company.id }
       expect(response).to have_http_status :ok
-      expect(json_response).to eq('shipment' => ShipmentBlueprint.render_as_json(shipment, items_order: nil))
+      json_shipment = ShipmentBlueprint.render_as_json(shipment, items_order: nil)
+      expect(json_response).to eq('shipment' => json_shipment.merge('tracking' => tracking_information))
     end
   end
 end

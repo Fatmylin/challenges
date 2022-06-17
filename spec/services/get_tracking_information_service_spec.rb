@@ -26,10 +26,10 @@ describe GetTrackingInformationService do
         )
       )
       expect(described_class.call(shipment: shipment)).to eq(
-        'status': 'InTransit',
-        'current_location': 'Singapore Main Office, Singapore',
-        'last_checkpoint_message': 'Received at Operations Facility',
-        'last_checkpoint_time': '2016-02-01T13:00:00'
+        'status' => 'InTransit',
+        'current_location' => 'Singapore Main Office, Singapore',
+        'last_checkpoint_message' => 'Received at Operations Facility',
+        'last_checkpoint_time' => '2016-02-01T13:00:00'
       )
     end
 

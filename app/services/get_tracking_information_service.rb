@@ -25,10 +25,10 @@ class GetTrackingInformationService < BaseService
     last_checkpoint = checkpoints.sort_by { |checkpoint| checkpoint['checkpoint_time'] }.last
     if last_checkpoint
       {
-        'status': last_checkpoint['tag'],
-        'current_location': last_checkpoint['location'],
-        'last_checkpoint_message': last_checkpoint['message'],
-        'last_checkpoint_time': last_checkpoint['checkpoint_time']
+        'status' => last_checkpoint['tag'],
+        'current_location' => last_checkpoint['location'],
+        'last_checkpoint_message' => last_checkpoint['message'],
+        'last_checkpoint_time' => last_checkpoint['checkpoint_time']
       }
     else
       {}

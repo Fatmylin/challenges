@@ -60,7 +60,7 @@ Now let's implement an endpoint `GET /companies/:company_id/shipments/:id?items_
 }
 ```
 
-## Task 3
+(Done)## Task 3
 
 Our clients want to track theier shipments, so let's update that endpoint to include tracking information provided by the [Aftership API](https:#developers.aftership.com/reference/overview) in the response. Make a request to the Aftership API to retrieve the required information and update the response accordingly:
 
