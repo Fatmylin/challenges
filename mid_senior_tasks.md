@@ -88,7 +88,7 @@ Our clients want to track theier shipments, so let's update that endpoint to inc
   - Fake responses are available under `spec/fixtures/aftership/`
   - Don't forget to deal with the situation where tracking information is unavailable
 
-## Task 4
+(Done)## Task 4
 
 By this time, you may have noticed that we have an endpoint `GET /companies/:company_id/shipments` that now retrieves all shipments but that's certainly buggy! Have a look and fix it so that only shipments that belong to a certain company are included in the response. The response should look like this:
 
