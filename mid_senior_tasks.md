@@ -130,7 +130,7 @@ By this time, you may have noticed that we have an endpoint `GET /companies/:com
 
 **Note**: a shipment could have lots of shipment_items. Keep performance in mind implementing the feature
 
-## Task 5
+(Done) ## Task 5
 
 We would like to add another endpoint `POST /companies/:company_id/shipments/search` where users can search shipments by number of items.
 
@@ -170,7 +170,7 @@ We would like to add another endpoint `POST /companies/:company_id/shipments/sea
 }
 ```
 
-**BONUS**: search by shipment_item's description
+(Done)**BONUS**: search by shipment_item's description
 
 ``` jsonc
 // request body

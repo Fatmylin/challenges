@@ -1,4 +1,8 @@
 class Shipment < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  include Searchable::Shipment
+
   belongs_to :company
   has_many :shipment_items
 
@@ -18,5 +22,9 @@ class Shipment < ApplicationRecord
     items.sort_by do |item|
       items_order == 'ASC' ? item[:count] : -item[:count]
     end
+  end
+
+  def shipment_items_size
+    shipment_items.count
   end
 end

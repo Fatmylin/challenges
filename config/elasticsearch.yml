@@ -1,0 +1,12 @@
+production:
+  host: localhost
+  scheme: http
+  port: 9200
+staging:
+  host: localhost
+  scheme: http
+  port: 9200
+development:
+  host: localhost
+  scheme: http
+  port: 9200
