@@ -209,7 +209,7 @@ We would like to add another endpoint `POST /companies/:company_id/shipments/sea
 }
 ```
 
-## Task 6
+(Done)## Task 6
 
 To keep track of record changes, we need a logging module that saves all record changes for multiple models. Please create a `task6.md` file and write pseudo codes that track changes of shipments and shipment items.
 
