@@ -215,6 +215,6 @@ To keep track of record changes, we need a logging module that saves all record 
 
 **BONUS**: Log changes only for specified columns
 
-## Task 7
+(Done)## Task 7
 
 Thanks to your contributions, our website becomes popular. For the endpoint `GET companies/:company_id/shipments/:id`, we get 100 times more requests than before and clients start to complain slow response time. Please create a `task7.md` file and share possible solutions to improve the response time.
