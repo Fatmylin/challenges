@@ -11,3 +11,20 @@
 
 - [Junior](junior_tasks.md)
 - [Mid / Senior](mid_senior_tasks.md)
+
+## How to run
+- Set up application
+```shell
+bundle install
+bundle exec rake db:migrate
+```
+- Install elasticsearch
+```shell
+brew tap elastic/tap
+brew install elastic/tap/elasticsearch-full
+```
+- Run server
+```shell
+brew services start elasticsearch-full
+rails s
+```
