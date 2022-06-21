@@ -1,3 +1,3 @@
 FactoryBot.define do
-  factory :shipment
+  factory :shipment_item
 end
