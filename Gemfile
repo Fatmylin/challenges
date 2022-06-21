@@ -9,6 +9,11 @@ gem 'jbuilder'
 # Serializer
 gem 'blueprinter'
 
+# Search
+gem "elasticsearch", "< 7.14"
+gem 'elasticsearch-model', '~> 7.1.0'
+gem 'elasticsearch-rails', '~> 7.1.0'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'

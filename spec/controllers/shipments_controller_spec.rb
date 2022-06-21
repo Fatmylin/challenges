@@ -85,4 +85,43 @@ describe ShipmentsController do
       expect(json_response['shipments'].any? { |shipment| shipment['id'] == shipment_in_other_company.id }).to be_falsey
     end
   end
+
+  describe '#search' do
+    let!(:shipment_with_one_item) { create(:shipment, :with_one_item, company: company) }
+
+    it 'return not_found when company is not found' do
+      post :search, params: { company_id: 'XX' }
+      expect(response).to have_http_status :not_found
+      expect(json_response).to eq('errors' => 'Company not found')
+    end
+
+    it 'return unprocessable_entity when other error happenes' do
+      allow(ShipmentBlueprint).to receive(:render_as_json).and_raise('Error')
+      post :search, params: { company_id: company.id }
+      expect(response).to have_http_status :unprocessable_entity
+    end
+
+    it 'return shipments belonging to the company with specific shipment item size' do
+      allow(Shipment).to receive(:search).and_return(OpenStruct.new(results: [OpenStruct.new(id: shipment.id)]))
+      post :search, params: { company_id: company.id, shipment_items_size: 3 }
+      expect(response).to have_http_status :ok
+      expect(json_response).to eq('shipments' => [
+        { 
+          'company_id' => 1, 
+          'created_at' => '2022 Jun 15 at 04:00PM (Wednesday)', 
+          'destination_country' => 'GB', 
+          'id' => 1, 
+          'items' => [
+            { 'count' => 1, 'description' => 'Apple Watch' }, 
+            { 'count' => 2, 'description' => 'iPad' }, 
+            { 'count' => 3, 'description' => 'iPhone' }
+          ], 
+          'origin_country' => 'CR', 
+          'slug' => 'usps', 
+          'tracking_number' => '000000000000',
+        }
+      ])
+      expect(json_response['shipments'].any? { |shipment| shipment['id'] == shipment_with_one_item.id }).to be_falsey
+    end
+  end
 end

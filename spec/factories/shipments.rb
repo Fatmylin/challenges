@@ -19,5 +19,16 @@ FactoryBot.define do
         end
       end
     end
+
+    trait :with_one_item do
+      after(:create) do |shipment|
+        create(
+          :shipment_item, 
+          description: 'Apple Watch',
+          weight: 1,
+          shipment: shipment
+        )
+      end
+    end
   end
 end

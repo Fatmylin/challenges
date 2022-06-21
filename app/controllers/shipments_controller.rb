@@ -27,9 +27,27 @@ class ShipmentsController < ApplicationController
     render json: { errors: e.message }, status: :unprocessable_entity
   end
 
+  def search
+    company = Company.find(params[:company_id])
+    term = shipment_params.try(:[], :shipment_items).try(:[], :description) || shipment_params[:shipment_items_size]
+    shipment_ids = Shipment.search(term).results.map(&:id)
+    shipments = Shipment.where(id: shipment_ids, company_id: params[:company_id]).includes(:shipment_items)
+    render json: { shipments: ShipmentBlueprint.render_as_json(shipments, items_order: 'ASC') }
+  rescue ActiveRecord::RecordNotFound => e
+    render json: { errors: 'Company not found' }, status: :not_found
+  rescue StandardError => e
+    render json: { errors: e.message }, status: :unprocessable_entity
+  end
+
   private
 
   def shipment_params
-    params.permit(:items_order)
+    params.permit(
+      :id,
+      :company_id,
+      :items_order, 
+      :shipment_items_size,
+      shipment_items: [:description]
+    )
   end
 end
