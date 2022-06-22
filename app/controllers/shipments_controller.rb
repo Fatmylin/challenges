@@ -4,8 +4,7 @@ class ShipmentsController < ApplicationController
   end
 
   def show
-    shipment = Shipment.find_by(id: params[:id], company_id: params[:company_id])
-    raise ActiveRecord::RecordNotFound if shipment.nil?
+    shipment = Shipment.find_by!(id: params[:id], company_id: params[:company_id])
 
     render json: { 
       shipment:  ShipmentBlueprint.render_as_json(
