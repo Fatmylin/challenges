@@ -4,7 +4,7 @@
   1. Check the codebase to make sure we do write an efficient query sentence.
      - For example, using `includes` to reduce database query time, but keep it in mind that it will also comsume the space of memory. 
      - In some cases, a `SQL` statement in rails query, would also help to speed up the query, althought it is possibly hard to read.
-  2. Add index for relevant databases. In this case, shipment would have many shipment items, so it's better to set index `index_shipment_item_on_invoice_id` for table `shipment_itmes`.
+  2. Add index for relevant databases. In this case, shipment would have many shipment items, so it's better to set index `index_shipment_item_on_shipment_id` for table `shipment_itmes`.
   3. Provide more database servers.
      - If the issue does not get better after implementing the above solutions, maybe it's time to expand the number of the database server. We may separate databases for reading and writing.
      ```yml
