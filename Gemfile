@@ -6,6 +6,9 @@ gem 'sqlite3'
 gem 'puma'
 gem 'jbuilder'
 
+# Serializer
+gem 'blueprinter'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
@@ -22,6 +25,7 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'timecop'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
