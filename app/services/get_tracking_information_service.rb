@@ -28,7 +28,7 @@ class GetTrackingInformationService < BaseService
         'status' => last_checkpoint['tag'],
         'current_location' => last_checkpoint['location'],
         'last_checkpoint_message' => last_checkpoint['message'],
-        'last_checkpoint_time' => last_checkpoint['checkpoint_time']
+        'last_checkpoint_time' => Time.zone.parse(last_checkpoint['checkpoint_time']).strftime("%A, %d %b %Y at %I:%M %p ")
       }
     else
       {}
