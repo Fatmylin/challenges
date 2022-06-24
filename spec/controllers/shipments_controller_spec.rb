@@ -22,7 +22,7 @@ describe ShipmentsController do
         'status' => 'InTransit',
         'current_location' => 'Singapore Main Office, Singapore',
         'last_checkpoint_message' => 'Received at Operations Facility',
-        'last_checkpoint_time' => '2016-02-01T13:00:00'
+        'last_checkpoint_time' => 'Monday, 01 Feb 2016 at 01:00 PM'
       }
       expect(GetTrackingInformationService).to receive(:call).and_return(tracking_information)
       get :show, params: { id: shipment.id, company_id: company.id }
