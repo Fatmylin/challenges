@@ -26,8 +26,24 @@ RSpec.describe Shipment, type: :model do
         ])
       end
 
+      it 'return description and count of shipment items in asc order of count' do
+        expect(shipment.shipment_items_with_description_and_count(items_order: 'asc')).to eq([
+          { description: 'Apple Watch', count: 1 },
+          { description: 'iPad', count: 2 },
+          { description: 'iPhone', count: 3}
+        ])
+      end
+
       it 'return description and count of shipment items in DESC order of count' do
         expect(shipment.shipment_items_with_description_and_count(items_order: 'DESC')).to eq([
+          { description: 'iPhone', count: 3},
+          { description: 'iPad', count: 2 },
+          { description: 'Apple Watch', count: 1 }
+        ])
+      end
+
+      it 'return description and count of shipment items in desc order of count' do
+        expect(shipment.shipment_items_with_description_and_count(items_order: 'desc')).to eq([
           { description: 'iPhone', count: 3},
           { description: 'iPad', count: 2 },
           { description: 'Apple Watch', count: 1 }

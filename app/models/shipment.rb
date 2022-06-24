@@ -5,6 +5,8 @@ class Shipment < ApplicationRecord
   ORDER = ['ASC', 'DESC'].freeze
 
   def shipment_items_with_description_and_count(items_order:)
+    items_order.upcase!
+
     raise "Please provide correct items order like 'ASC' or 'DESC'" if ORDER.exclude?(items_order)
     
     items = shipment_items.group(:description).count.map do |description, count|
